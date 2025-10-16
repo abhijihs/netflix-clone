@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Coin Collector</title>
+    <link rel="stylesheet" href="zombie-game.css">
+</head>
+<body>
+    <!-- Start Screen -->
+    <div id="startScreen" class="screen">
+        <div class="screen-content">
+            <h1>ZOMBIE COIN COLLECTOR</h1>
+            <p>Collect coins and avoid enemy zombies!</p>
+            <div class="instructions">
+                <h3>Controls:</h3>
+                <p>Arrow Keys or WASD - Move</p>
+                <p>Collect yellow coins to score points</p>
+                <p>Avoid red enemy zombies!</p>
+            </div>
+            <button id="startButton" class="game-button">START GAME</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" style="display: none;">
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- HUD -->
+        <div id="hud">
+            <div class="hud-item">
+                <span class="hud-label">Score:</span>
+                <span id="scoreDisplay" class="hud-value">0</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">Health:</span>
+                <span id="healthDisplay" class="hud-value">100</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">Time:</span>
+                <span id="timeDisplay" class="hud-value">0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Screen -->
+    <div id="endScreen" class="screen" style="display: none;">
+        <div class="screen-content">
+            <h1>GAME OVER</h1>
+            <div class="final-stats">
+                <h2>Final Score</h2>
+                <div class="stat-row">
+                    <span class="stat-label">Points:</span>
+                    <span id="finalScore" class="stat-value">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Coins Collected:</span>
+                    <span id="finalCoins" class="stat-value">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Time Survived:</span>
+                    <span id="finalTime" class="stat-value">0s</span>
+                </div>
+            </div>
+            <button id="restartButton" class="game-button">PLAY AGAIN</button>
+            <button id="homeButton" class="game-button secondary">MAIN MENU</button>
+        </div>
+    </div>
+
+    <script src="zombie-game.js"></script>
+</body>
+</html>
