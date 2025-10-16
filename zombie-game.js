@@ -9,12 +9,12 @@ let lastTime = 0;
 
 // Game configuration
 const GAME_CONFIG = {
-    playerSpeed: 5,
-    enemySpeed: 2.5,
+    playerSpeed: 6,
+    enemySpeed: 1.2,
     coinCount: 15,
-    enemyCount: 5,
-    enemyDamage: 10,
-    enemyAttackCooldown: 1000,
+    enemyCount: 3,
+    enemyDamage: 5,
+    enemyAttackCooldown: 2000,
     canvasWidth: 800,
     canvasHeight: 600
 };
@@ -152,8 +152,16 @@ class Coin {
 // Enemy class
 class Enemy {
     constructor() {
-        this.x = Math.random() * GAME_CONFIG.canvasWidth;
-        this.y = Math.random() * GAME_CONFIG.canvasHeight;
+        // Spawn enemies away from center
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 200 + Math.random() * 100;
+        this.x = GAME_CONFIG.canvasWidth / 2 + Math.cos(angle) * distance;
+        this.y = GAME_CONFIG.canvasHeight / 2 + Math.sin(angle) * distance;
+        
+        // Keep within bounds
+        this.x = Math.max(50, Math.min(GAME_CONFIG.canvasWidth - 50, this.x));
+        this.y = Math.max(50, Math.min(GAME_CONFIG.canvasHeight - 50, this.y));
+        
         this.width = 30;
         this.height = 40;
         this.color = '#ff0000';
