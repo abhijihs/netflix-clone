@@ -16,7 +16,10 @@ const GAME_CONFIG = {
     enemyDamage: 5,
     enemyAttackCooldown: 2000,
     canvasWidth: 800,
-    canvasHeight: 600
+    canvasHeight: 600,
+    enemySpawnMinDistance: 200,
+    enemySpawnMaxDistance: 300,
+    enemySpawnPadding: 50
 };
 
 // DOM Elements
@@ -154,13 +157,13 @@ class Enemy {
     constructor() {
         // Spawn enemies away from center
         const angle = Math.random() * Math.PI * 2;
-        const distance = 200 + Math.random() * 100;
+        const distance = GAME_CONFIG.enemySpawnMinDistance + Math.random() * (GAME_CONFIG.enemySpawnMaxDistance - GAME_CONFIG.enemySpawnMinDistance);
         this.x = GAME_CONFIG.canvasWidth / 2 + Math.cos(angle) * distance;
         this.y = GAME_CONFIG.canvasHeight / 2 + Math.sin(angle) * distance;
         
         // Keep within bounds
-        this.x = Math.max(50, Math.min(GAME_CONFIG.canvasWidth - 50, this.x));
-        this.y = Math.max(50, Math.min(GAME_CONFIG.canvasHeight - 50, this.y));
+        this.x = Math.max(GAME_CONFIG.enemySpawnPadding, Math.min(GAME_CONFIG.canvasWidth - GAME_CONFIG.enemySpawnPadding, this.x));
+        this.y = Math.max(GAME_CONFIG.enemySpawnPadding, Math.min(GAME_CONFIG.canvasHeight - GAME_CONFIG.enemySpawnPadding, this.y));
         
         this.width = 30;
         this.height = 40;
